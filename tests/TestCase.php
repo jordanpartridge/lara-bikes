@@ -3,7 +3,7 @@
 namespace jordanpartridge\StravaIntegration\Tests;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use jordanpartridge\StravaIntegration\StravaIntegrationServiceProvider;
+use jordanpartridge\LaraBikes\LaraBikesServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
 
 class TestCase extends Orchestra
@@ -20,7 +20,7 @@ class TestCase extends Orchestra
     protected function getPackageProviders($app)
     {
         return [
-            StravaIntegrationServiceProvider::class,
+            LaraBikesServiceProvider::class,
         ];
     }
 

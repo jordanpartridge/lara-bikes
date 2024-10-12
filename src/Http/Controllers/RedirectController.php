@@ -1,6 +1,6 @@
 <?php
 
-namespace jordanpartridge\StravaIntegration\Http\Controllers;
+namespace jordanpartridge\LaraBikes\Http\Controllers;
 
 final class RedirectController
 {

@@ -1,12 +1,12 @@
 <?php
 
-namespace jordanpartridge\StravaIntegration\Commands;
+namespace jordanpartridge\LaraBikes\Commands;
 
 use Illuminate\Console\Command;
 
-class StravaIntegrationCommand extends Command
+class LaraBikesCommand extends Command
 {
-    public $signature = 'strava-integration';
+    public $signature = 'lara-bikes';
 
     public $description = 'My command';
 

@@ -1,12 +1,12 @@
 {
-    "name": "jordanpartridge/strava-integration",
-    "description": "This is my package strava-integration",
+    "name": "jordanpartridge/lara-bikes",
+    "description": "A Strava integration for Laravel",
     "keywords": [
         "jordanpartridge",
         "laravel",
-        "strava-integration"
+        "lara-bikes"
     ],
-    "homepage": "https://github.com/jordanpartridge/strava-integration",
+    "homepage": "https://github.com/jordanpartridge/lara-bikes",
     "license": "MIT",
     "authors": [
         {
@@ -35,19 +35,19 @@
     },
     "autoload": {
         "psr-4": {
-            "jordanpartridge\\StravaIntegration\\": "src/",
-            "jordanpartridge\\StravaIntegration\\Database\\Factories\\": "database/factories/"
+            "jordanpartridge\\LaraBikes\\": "src/",
+            "jordanpartridge\\LaraBikes\\Database\\Factories\\": "database/factories/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "jordanpartridge\\StravaIntegration\\Tests\\": "tests/",
+            "jordanpartridge\\LaraBikes\\Tests\\": "tests/",
             "Workbench\\App\\": "workbench/app/"
         }
     },
     "scripts": {
         "post-autoload-dump": "@composer run prepare",
-        "clear": "@php vendor/bin/testbench package:purge-strava-integration --ansi",
+        "clear": "@php vendor/bin/testbench package:purge-lara-bikes --ansi",
         "prepare": "@php vendor/bin/testbench package:discover --ansi",
         "build": [
             "@composer run prepare",
@@ -73,10 +73,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "jordanpartridge\\StravaIntegration\\StravaIntegrationServiceProvider"
+                "jordanpartridge\\LaraBikes\\LaraBikesServiceProvider"
             ],
             "aliases": {
-                "StravaIntegration": "jordanpartridge\\StravaIntegration\\Facades\\StravaIntegration"
+                "LaraBikes": "jordanpartridge\\LaraBikes\\Facades\\LaraBikes"
             }
         }
     },
