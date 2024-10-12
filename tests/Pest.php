@@ -1,5 +1,5 @@
 <?php
 
-use VendorName\Skeleton\Tests\TestCase;
+use jordanpartridge\StravaIntegration\Tests\TestCase;
 
 uses(TestCase::class)->in(__DIR__);

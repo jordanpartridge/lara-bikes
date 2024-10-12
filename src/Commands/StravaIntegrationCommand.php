@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton\Commands;
+namespace jordanpartridge\StravaIntegration\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class StravaIntegrationCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'strava-integration';
 
     public $description = 'My command';
 
