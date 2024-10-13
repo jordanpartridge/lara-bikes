@@ -1,5 +1,5 @@
 {
-    "name": "jordanpartridge/lara-bikes",
+    "name": "jordan-partridge/lara-bikes",
     "description": "A Strava integration for Laravel",
     "keywords": [
         "jordanpartridge",
@@ -35,13 +35,13 @@
     },
     "autoload": {
         "psr-4": {
-            "jordanpartridge\\LaraBikes\\": "src/",
-            "jordanpartridge\\LaraBikes\\Database\\Factories\\": "database/factories/"
+            "JordanPartridge\\LaraBikes\\": "src/",
+            "JordanPartridge\\LaraBikes\\Database\\Factories\\": "database/factories/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "jordanpartridge\\LaraBikes\\Tests\\": "tests/",
+            "JordanPartridge\\LaraBikes\\Tests\\": "tests/",
             "Workbench\\App\\": "workbench/app/"
         }
     },
@@ -73,10 +73,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "jordanpartridge\\LaraBikes\\LaraBikesServiceProvider"
+                "JordanPartridge\\LaraBikes\\LaraBikesServiceProvider"
             ],
             "aliases": {
-                "LaraBikes": "jordanpartridge\\LaraBikes\\Facades\\LaraBikes"
+                "LaraBikes": "JordanPartridge\\LaraBikes\\Facades\\LaraBikes"
             }
         }
     },

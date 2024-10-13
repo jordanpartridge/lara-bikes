@@ -1,11 +1,11 @@
 <?php
 
-namespace jordanpartridge\LaraBikes\Facades;
+namespace JordanPartridge\LaraBikes\Database\Factories\LaraBikes\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
 /**
- * @see \jordanpartridge\LaraBikes\LaraBikes
+ * @see \JordanPartridge\LaraBikes\Database\Factories\LaraBikes\LaraBikes
  */
 class LaraBikes extends Facade
 {

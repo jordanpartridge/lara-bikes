@@ -1,8 +1,8 @@
 <?php
 
-namespace jordanpartridge\LaraBikes\Http;
+namespace JordanPartridge\LaraBikes\Http;
 
-use jordanpartridge\LaraBikes\Http\Requests\TokenExchange;
+use JordanPartridge\LaraBikes\Database\Factories\LaraBikes\Http\Requests\TokenExchange;
 use Saloon\Exceptions\Request\FatalRequestException;
 use Saloon\Exceptions\Request\RequestException;
 use Saloon\Helpers\OAuth2\OAuthConfig;
@@ -33,8 +33,8 @@ class Strava extends Connector
      */
     public function refreshToken($refresh): Response
     {
-        $request = new TokenExchange($refresh, 'refresh_token');
-        $response = $this->send($request);
+        $request     = new TokenExchange($refresh, 'refresh_token');
+        $response    = $this->send($request);
         $this->token = $response->json()['access_token'];
 
         return $response;

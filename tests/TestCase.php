@@ -1,9 +1,9 @@
 <?php
 
-namespace jordanpartridge\LaraBikes\Tests;
+namespace JordanPartridge\LaraBikes\Tests;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use jordanpartridge\LaraBikes\LaraBikesServiceProvider;
+use JordanPartridge\LaraBikes\LaraBikesServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
 
 class TestCase extends Orchestra
@@ -13,7 +13,7 @@ class TestCase extends Orchestra
         parent::setUp();
 
         Factory::guessFactoryNamesUsing(
-            fn (string $modelName) => 'jordanpartridge\\StravaIntegration\\Database\\Factories\\'.class_basename($modelName).'Factory'
+            fn (string $modelName) => 'JordanPartridge\\LaraBikes\\Database\\Factories\\'.class_basename($modelName).'Factory'
         );
     }
 
@@ -24,13 +24,13 @@ class TestCase extends Orchestra
         ];
     }
 
-    public function getEnvironmentSetUp($app)
+    public function getEnvironmentSetUp($app): void
     {
         config()->set('database.default', 'testing');
 
-        /*
-        $migration = include __DIR__.'/../database/migrations/create_strava-integration_table.php.stub';
+
+        $migration = include __DIR__.'/../database/migrations/create_strava_tokens_table.php.stub';
         $migration->up();
-        */
+
     }
 }

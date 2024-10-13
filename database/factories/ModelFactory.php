@@ -1,6 +1,6 @@
 <?php
 
-namespace jordanpartridge\LaraBikes\Database\Factories;
+namespace JordanPartridge\LaraBikes\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
