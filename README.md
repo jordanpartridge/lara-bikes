@@ -9,7 +9,7 @@ Laravel applications. This package provides a simple way to authenticate with St
 API.
 ## Support us
 
-[<img src="https://github-ads.s3.eu-central-1.amazonaws.com/strava-integration.jpg?t=1" width="419px" />](https://spatie.be/github-ad-click/strava-integration)
+[<img src="https://github-ads.s3.eu-central-1.amazonaws.com/lara-bikes.jpg?t=1" width="419px" />](https://spatie.be/github-ad-click/lara-bikes)
 
 We invest a lot of resources into creating [best in class open source packages](https://spatie.be/open-source). You can support us by [buying one of our paid products](https://spatie.be/open-source/support-us).
 
@@ -34,7 +34,7 @@ php artisan lara-bikes:install
 Optionally, you can publish the views using
 
 ```bash
-php artisan vendor:publish --tag="strava-integration-views"
+php artisan vendor:publish --tag="lara-bikes-views"
 ```
 
 ## Usage
