@@ -8,5 +8,4 @@ use Illuminate\Database\Eloquent\Model;
 class StravaToken extends Model
 {
     use HasFactory;
-
 }

@@ -10,7 +10,6 @@ readonly class LaraBikes
 {
     public function __construct(private Strava $strava) {}
 
-
     public function activities(int $id): Response
     {
         return $this->strava->send(new Activities($id));

@@ -1,6 +1,5 @@
 <?php
 
-
 use JordanPartridge\LaraBikes\Http\Controllers\CallbackController;
 use JordanPartridge\LaraBikes\Http\Controllers\RedirectController;
 

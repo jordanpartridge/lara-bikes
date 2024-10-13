@@ -1,7 +1,7 @@
 <?php
 
-use JordanPartridge\LaraBikes\Models\StravaToken;
 use Illuminate\Support\Carbon;
+use JordanPartridge\LaraBikes\Models\StravaToken;
 
 it('can be created with factory default settings.', function () {
     $stravaToken = StravaToken::factory()->create();

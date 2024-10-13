@@ -33,8 +33,8 @@ class Strava extends Connector
      */
     public function refreshToken($refresh): Response
     {
-        $request     = new TokenExchange($refresh, 'refresh_token');
-        $response    = $this->send($request);
+        $request = new TokenExchange($refresh, 'refresh_token');
+        $response = $this->send($request);
         $this->token = $response->json()['access_token'];
 
         return $response;
