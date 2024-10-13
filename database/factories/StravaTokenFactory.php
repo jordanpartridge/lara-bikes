@@ -15,6 +15,8 @@ class StravaTokenFactory extends Factory
             'access_token' => $this->faker->sha256,
             'expires_at' => $this->faker->dateTimeBetween('now', '+1 hour'),
             'refresh_token' => $this->faker->sha256,
+            'athlete_id' => $this->faker->numberBetween(1, 10),
+            'user_id' => $this->faker->numberBetween(1, 10),
         ];
     }
 }
