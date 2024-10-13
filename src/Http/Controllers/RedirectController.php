@@ -8,12 +8,12 @@ final class RedirectController
     {
 
         $query = http_build_query([
-            'client_id' => config('services.strava.client_id'),
+            'client_id' => config('lara-bikes.strava.client_id'),
             'redirect_uri' => route('strava:callback'),
             'response_type' => 'code',
-            'scope' => config('services.strava.scope'),
+            'scope' => config('lara-bikes.strava.scope'),
         ]);
 
-        return redirect(config('services.strava.authorize_url').'?'.$query);
+        return redirect(config('lara-bikes.strava.authorize_url').'?'.$query);
     }
 }

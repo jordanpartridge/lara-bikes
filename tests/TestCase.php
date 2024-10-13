@@ -1,6 +1,6 @@
 <?php
 
-namespace jordanpartridge\StravaIntegration\Tests;
+namespace jordanpartridge\LaraBikes\Tests;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use jordanpartridge\LaraBikes\LaraBikesServiceProvider;

@@ -1,14 +1,13 @@
 <?php
 
-namespace jordanpartridge\StravaIntegration\Facades;
+namespace jordanpartridge\LaraBikes\Facades;
 
 use Illuminate\Support\Facades\Facade;
-use jordanpartridge\LaraBikes\LaraBikes;
 
 /**
- * @see \jordanpartridge\StravaIntegration\StravaIntegration
+ * @see \jordanpartridge\LaraBikes\LaraBikes
  */
-class StravaIntegration extends Facade
+class LaraBikes extends Facade
 {
     protected static function getFacadeAccessor(): string
     {

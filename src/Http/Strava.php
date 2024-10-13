@@ -1,7 +1,8 @@
 <?php
 
-namespace jordanpartridge\StravaIntegration\Http;
+namespace jordanpartridge\LaraBikes\Http;
 
+use jordanpartridge\LaraBikes\Http\Requests\TokenExchange;
 use Saloon\Exceptions\Request\FatalRequestException;
 use Saloon\Exceptions\Request\RequestException;
 use Saloon\Helpers\OAuth2\OAuthConfig;
@@ -10,8 +11,6 @@ use Saloon\Http\Connector;
 use Saloon\Http\Response;
 use Saloon\Traits\OAuth2\AuthorizationCodeGrant;
 use Saloon\Traits\Plugins\AcceptsJson;
-use jordanpartridge\Http\Requests\TokenExchange;
-
 
 class Strava extends Connector
 {
@@ -30,7 +29,7 @@ class Strava extends Connector
 
     /**
      * @throws FatalRequestException
-     * @throws RequestException
+     * @throws RequestException|\JsonException
      */
     public function refreshToken($refresh): Response
     {
@@ -72,4 +71,3 @@ class Strava extends Connector
         return $this->token ? new TokenAuthenticator($this->token) : null;
     }
 }
-

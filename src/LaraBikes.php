@@ -1,23 +1,21 @@
 <?php
 
-namespace jordanpartridge\StravaIntegration;
+namespace jordanpartridge\LaraBikes;
 
-use jordanpartridge\StravaIntegration\Http\Requests\Activities;
-use jordanpartridge\StravaIntegration\Http\Strava;
+use jordanpartridge\LaraBikes\Http\Requests\Activities;
+use jordanpartridge\LaraBikes\Http\Strava;
 
-class StravaIntegration
+class LaraBikes
 {
-    public function __construct(private Strava $strava)
-    {}
+    public function __construct(private Strava $strava) {}
 
     public function test()
     {
         return 'some test';
-        
 
     }
 
-    public  function activities()
+    public function activities()
     {
         return $this->strava->send(new Activities(1));
     }

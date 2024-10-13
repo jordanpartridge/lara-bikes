@@ -1,13 +1,16 @@
 <?php
 
-namespace jordanpartridge\StravaIntegration\Http\Requests;
+namespace jordanpartridge\LaraBikes\Http\Requests;
 
-use Saloon\Traits\Plugins\HasJsonBody;
-
+use Saloon\Contracts\Body\HasBody;
+use Saloon\Enums\Method;
 use Saloon\Http\Request;
+use Saloon\Traits\Body\HasJsonBody;
 
-class TokenExchange extends Request implements HasJsonBody
+class TokenExchange extends Request implements HasBody
 {
+    use HasJsonBody;
+
     /**
      * The HTTP method of the request
      */
@@ -42,16 +45,18 @@ class TokenExchange extends Request implements HasJsonBody
      */
     public function defaultBody(): array
     {
-        return $this->grant_type === 'authorization_code' ? [
-            'client_id'     => config('strava.client_id'),
-            'client_secret' => config('strava.client_secret'),
-            'code'          => $this->code,
-            'grant_type'    => $this->grant_type,
-        ] : [
-            'client_id'     => config('strava.client_id'),
-            'client_secret' => config('strava.client_secret'),
-            'refresh_token' => $this->code,
-            'grant_type'    => $this->grant_type,
-        ];
+        return $this->grant_type === 'authorization_code'
+            ? [
+                'client_id' => config('lara-bikes.strava.client_id'),
+                'client_secret' => config('lara-bikes.strava.client_secret'),
+                'code' => $this->code,
+                'grant_type' => $this->grant_type,
+            ]
+            : [
+                'client_id' => config('lara-bikes.strava.client_id'),
+                'client_secret' => config('lara-bikes.strava.client_secret'),
+                'refresh_token' => $this->code,
+                'grant_type' => $this->grant_type,
+            ];
     }
 }

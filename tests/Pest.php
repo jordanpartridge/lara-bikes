@@ -1,5 +1,5 @@
 <?php
 
-use jordanpartridge\StravaIntegration\Tests\TestCase;
+use jordanpartridge\LaraBikes\Tests\TestCase;
 
 uses(TestCase::class)->in(__DIR__);

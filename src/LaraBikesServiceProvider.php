@@ -3,7 +3,7 @@
 namespace jordanpartridge\LaraBikes;
 
 use jordanpartridge\LaraBikes\Commands\LaraBikesCommand;
-use jordanpartridge\StravaIntegration\Http\Strava;
+use jordanpartridge\LaraBikes\Http\Strava;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
@@ -17,10 +17,10 @@ class LaraBikesServiceProvider extends PackageServiceProvider
          * More info: https://github.com/spatie/laravel-package-tools
          */
         $package
-            ->name('strava')
+            ->name('lara-bikes')
             ->hasConfigFile()
             ->hasViews()
-            ->hasMigration('create_strava_integration_table')
+            // ->hasMigration('create_strava_integration_table')
             ->hasCommand(LaraBikesCommand::class)
             ->hasRoutes(['web', 'api'])
             ->hasTranslations()
@@ -34,15 +34,14 @@ class LaraBikesServiceProvider extends PackageServiceProvider
     private function registerServices(): void
     {
         $this->app->singleton(LaraBikes::class, function ($app) {
-            return new StravaIntegration(new Strava());
+            return new LaraBikes(new Strava);
         });
-
 
     }
 
     private function registerFacades(): void
     {
-        $this->app->alias(StravaIntegration::class, 'strava-integration');
+        $this->app->alias(LaraBikes::class, 'lara-bikes');
     }
 
     private function registerMiddleware(): void

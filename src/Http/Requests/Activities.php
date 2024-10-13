@@ -1,13 +1,12 @@
 <?php
 
-namespace jordanpartridge\StravaIntegration\Http\Requests;
+namespace jordanpartridge\LaraBikes\Http\Requests;
 
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
 
 class Activities extends Request
 {
-
     /**
      * The HTTP method of the request
      */
@@ -25,6 +24,6 @@ class Activities extends Request
 
     public function resolveEndpoint(): string
     {
-        return '/activities/' . $this->id;
+        return '/activities/'.$this->id;
     }
 }

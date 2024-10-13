@@ -51,8 +51,8 @@ php artisan vendor:publish --tag="strava-integration-views"
 
 ## Usage
 
-```php
-$stravaIntegration = new jordanpartridge\StravaIntegration();
+```L
+$stravaIntegration = new jordanpartridge\LaraBikes();
 echo $stravaIntegration->echoPhrase('Hello, jordanpartridge!');
 ```
 
