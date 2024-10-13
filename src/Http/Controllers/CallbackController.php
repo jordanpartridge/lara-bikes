@@ -15,9 +15,12 @@ final readonly class CallbackController
     {
         $validated = $request->validate([
             'code' => ['required', 'string'],
+            'client_id' => ['required', 'string'],
+            'client_secret' => ['required', 'string'],
+            'grant_type' => ['required', 'string'],
         ]);
 
-        $response = $this->strava->send(new TokenExchange($validated['code']));
+        $response = $this->strava->send(new TokenExchange($validated));
 
         if (! $response->ok()) {
             return response(['error' => 'Failed to exchange token'], 500);
