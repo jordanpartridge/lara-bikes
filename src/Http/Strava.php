@@ -22,7 +22,7 @@ class Strava extends Connector
      */
     private ?string $token;
 
-    public function __construct(?string $token = null, )
+    public function __construct(?string $token = null)
     {
         $this->token = $token;
     }
@@ -34,9 +34,9 @@ class Strava extends Connector
     public function refreshToken($client_id, $client_secret, $refresh_token): Response
     {
         $config = [
-            'client_id'     => $client_id,
+            'client_id' => $client_id,
             'client_secret' => $client_secret,
-            'grant_type'    => 'refresh_token',
+            'grant_type' => 'refresh_token',
             'refresh_token' => $refresh_token,
         ];
         $request = new TokenExchange($config);

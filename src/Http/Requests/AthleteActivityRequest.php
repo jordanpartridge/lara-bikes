@@ -14,9 +14,7 @@ class AthleteActivityRequest extends Request
 
     public function __construct(
         private readonly array $payload,
-    )
-    {
-    }
+    ) {}
 
     /**
      * The endpoint for the request
@@ -29,12 +27,14 @@ class AthleteActivityRequest extends Request
                 $queryParams[$param] = urlencode($this->payload[$param]);
             }
         }
-        return '/athlete/activities?' . http_build_query($queryParams);
+
+        return '/athlete/activities?'.http_build_query($queryParams);
     }
 
     public function resolveQuery(): array
     {
         $allowedParams = ['page', 'per_page'];
+
         return array_intersect_key($this->payload, array_flip($allowedParams));
     }
 }
