@@ -2,11 +2,11 @@
 
 namespace JordanPartridge\LaraBikes\Http\Requests;
 
+use Illuminate\Support\Facades\Validator;
 use Saloon\Contracts\Body\HasBody;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
 use Saloon\Traits\Body\HasJsonBody;
-use Illuminate\Support\Facades\Validator;
 
 class TokenExchange extends Request implements HasBody
 {
