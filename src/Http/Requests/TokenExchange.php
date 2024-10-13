@@ -63,7 +63,7 @@ class TokenExchange extends Request implements HasBody
                 'grant_type' => $this->grant_type,
             ]
             : [
-                'refresh_token' => $this->code,
+                'refresh_token' => $this->refresh_token,
             ];
     }
 }
