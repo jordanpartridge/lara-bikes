@@ -1,9 +1,9 @@
 <?php
 
-namespace jordanpartridge\LaraBikes;
+namespace JordanPartridge\LaraBikes;
 
-use jordanpartridge\LaraBikes\Commands\LaraBikesCommand;
-use jordanpartridge\LaraBikes\Http\Strava;
+use JordanPartridge\LaraBikes\Commands\LaraBikesCommand;
+use JordanPartridge\LaraBikes\Http\Strava;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
@@ -20,11 +20,9 @@ class LaraBikesServiceProvider extends PackageServiceProvider
             ->name('lara-bikes')
             ->hasConfigFile()
             ->hasViews()
-            // ->hasMigration('create_strava_integration_table')
+            ->hasMigration('create_strava_tokens_table')
             ->hasCommand(LaraBikesCommand::class)
-            ->hasRoutes(['web', 'api'])
-            ->hasTranslations()
-            ->hasAssets();
+            ->hasRoutes(['web', 'api']);
 
         $this->registerServices();
         $this->registerFacades();

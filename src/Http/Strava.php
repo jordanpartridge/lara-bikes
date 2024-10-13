@@ -1,8 +1,8 @@
 <?php
 
-namespace jordanpartridge\LaraBikes\Http;
+namespace JordanPartridge\LaraBikes\Http;
 
-use jordanpartridge\LaraBikes\Http\Requests\TokenExchange;
+use JordanPartridge\LaraBikes\Http\Requests\TokenExchange;
 use Saloon\Exceptions\Request\FatalRequestException;
 use Saloon\Exceptions\Request\RequestException;
 use Saloon\Helpers\OAuth2\OAuthConfig;

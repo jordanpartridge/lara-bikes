@@ -1,6 +1,6 @@
 <?php
 
-namespace jordanpartridge\LaraBikes\Http\Requests;
+namespace JordanPartridge\LaraBikes\Http\Requests;
 
 use Saloon\Enums\Method;
 use Saloon\Http\Request;

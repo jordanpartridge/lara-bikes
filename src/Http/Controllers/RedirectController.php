@@ -1,6 +1,6 @@
 <?php
 
-namespace jordanpartridge\LaraBikes\Http\Controllers;
+namespace JordanPartridge\LaraBikes\Http\Controllers;
 
 final class RedirectController
 {
