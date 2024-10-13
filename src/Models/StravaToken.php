@@ -9,7 +9,6 @@ class StravaToken extends Model
 {
     use HasFactory;
 
-
     protected $fillable = [
         'user_id',
         'access_token',
@@ -17,7 +16,6 @@ class StravaToken extends Model
         'refresh_token',
         'athlete_id',
     ];
-
 
     protected $casts = [
         'expires_at' => 'datetime',
