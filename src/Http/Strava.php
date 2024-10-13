@@ -22,7 +22,7 @@ class Strava extends Connector
      */
     private ?string $token;
 
-    public function __construct(?string $token = null)
+    public function __construct(?string $token = null, )
     {
         $this->token = $token;
     }
@@ -31,9 +31,15 @@ class Strava extends Connector
      * @throws FatalRequestException
      * @throws RequestException|\JsonException
      */
-    public function refreshToken($refresh): Response
+    public function refreshToken($client_id, $client_secret, $refresh_token): Response
     {
-        $request = new TokenExchange($refresh, 'refresh_token');
+        $config = [
+            'client_id'     => $client_id,
+            'client_secret' => $client_secret,
+            'grant_type'    => 'refresh_token',
+            'refresh_token' => $refresh_token,
+        ];
+        $request = new TokenExchange($config);
         $response = $this->send($request);
         $this->token = $response->json()['access_token'];
 
