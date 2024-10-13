@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton\Commands;
+namespace jordanpartridge\LaraBikes\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class LaraBikesCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'lara-bikes';
 
     public $description = 'My command';
 
