@@ -15,12 +15,10 @@ readonly class LaraBikes
     /**
      * Get an activity by its ID.
      *
-     * @param int $id - The Strava activity ID.
+     * @param  int  $id  - The Strava activity ID.
      *
      * @throws FatalRequestException
      * @throws RequestException
-     *
-     * @return Response
      */
     public function activity(int $id): Response
     {

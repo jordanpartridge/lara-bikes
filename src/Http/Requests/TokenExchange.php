@@ -23,9 +23,7 @@ class TokenExchange extends Request implements HasBody
 
     private string $client_id;
 
-
     private string $client_secret;
-
 
     private string $refresh_token;
 
@@ -36,7 +34,7 @@ class TokenExchange extends Request implements HasBody
 
     public function __construct(array $config)
     {
-      // pull values from config
+        // pull values from config
         $this->code = $config['code'];
         $this->grant_type = $config['grant_type'];
         $this->client_id = $config['client_id'];
