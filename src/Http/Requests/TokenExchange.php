@@ -21,15 +21,27 @@ class TokenExchange extends Request implements HasBody
      */
     private string $code;
 
+    private string $client_id;
+
+
+    private string $client_secret;
+
+
+    private string $refresh_token;
+
     /**
      * The type of grant being exchanged
      */
     private string $grant_type;
 
-    public function __construct(string $code, string $grant_type = 'authorization_code')
+    public function __construct(array $config)
     {
-        $this->code = $code;
-        $this->grant_type = $grant_type;
+      // pull values from config
+        $this->code = $config['code'];
+        $this->grant_type = $config['grant_type'];
+        $this->client_id = $config['client_id'];
+        $this->client_secret = $config['client_secret'];
+        $this->refresh_token = $config['refresh_token'];
     }
 
     /**
@@ -47,16 +59,13 @@ class TokenExchange extends Request implements HasBody
     {
         return $this->grant_type === 'authorization_code'
             ? [
-                'client_id' => config('lara-bikes.strava.client_id'),
-                'client_secret' => config('lara-bikes.strava.client_secret'),
+                'client_id' => $this->client_id,
+                'client_secret' => $this->client_secret,
                 'code' => $this->code,
                 'grant_type' => $this->grant_type,
             ]
             : [
-                'client_id' => config('lara-bikes.strava.client_id'),
-                'client_secret' => config('lara-bikes.strava.client_secret'),
                 'refresh_token' => $this->code,
-                'grant_type' => $this->grant_type,
             ];
     }
 }
