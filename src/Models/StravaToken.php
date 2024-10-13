@@ -4,6 +4,7 @@ namespace JordanPartridge\LaraBikes\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class StravaToken extends Model
 {
@@ -21,8 +22,8 @@ class StravaToken extends Model
         'expires_at' => 'datetime',
     ];
 
-    public function user(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function user(): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(config('larabikes.user_model', 'App\Models\User'));
     }
 }
