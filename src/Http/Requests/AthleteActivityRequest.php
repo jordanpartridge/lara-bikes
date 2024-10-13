@@ -13,8 +13,9 @@ class AthleteActivityRequest extends Request
     protected Method $method = Method::GET;
 
     public function __construct(
-        private array $payload,
-    ) {
+        private readonly array $payload,
+    )
+    {
     }
 
     /**
@@ -22,11 +23,18 @@ class AthleteActivityRequest extends Request
      */
     public function resolveEndpoint(): string
     {
-        return '/athlete/activities?page=' . $this->payload['page'] . '&per_page=' . $this->payload['per_page'];
+        $queryParams = [];
+        foreach (['page', 'per_page'] as $param) {
+            if (isset($this->payload[$param])) {
+                $queryParams[$param] = urlencode($this->payload[$param]);
+            }
+        }
+        return '/athlete/activities?' . http_build_query($queryParams);
     }
 
     public function resolveQuery(): array
     {
-        return $this->payload;
+        $allowedParams = ['page', 'per_page'];
+        return array_intersect_key($this->payload, array_flip($allowedParams));
     }
 }
