@@ -3,8 +3,8 @@
 namespace JordanPartridge\LaraBikes\Http\Controllers;
 
 use Illuminate\Http\Request;
-use JordanPartridge\LaraBikes\Database\Factories\LaraBikes\Http\Requests\TokenExchange;
-use JordanPartridge\LaraBikes\Database\Factories\LaraBikes\Http\Strava;
+use JordanPartridge\LaraBikes\Http\Requests\TokenExchange;
+use JordanPartridge\LaraBikes\Http\Strava;
 
 final class CallbackController
 {

@@ -14,7 +14,7 @@ class LaraBikesCommand extends Command
     {
         $this->info('Setting up LaraBikes...');
         $this->info('Installing dependencies...');
-        $this->call('vendor:publish', ['--provider' => 'jordanpartridge\LaraBikes\LaraBikesServiceProvider']);
+        $this->call('vendor:publish', ['--provider' => 'JordanPartridge\LaraBikes\LaraBikesServiceProvider']);
         $this->info('Dependencies installed successfully.');
         $this->info('Running migrations...');
         $this->call('migrate');

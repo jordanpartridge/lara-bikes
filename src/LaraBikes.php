@@ -2,9 +2,7 @@
 
 namespace JordanPartridge\LaraBikes;
 
-;
-
-use JordanPartridge\LaraBikes\Database\Factories\LaraBikes\Http\Requests\Activities;
+use JordanPartridge\LaraBikes\Http\Requests\Activities;
 use JordanPartridge\LaraBikes\Http\Strava;
 use Saloon\Http\Response;
 

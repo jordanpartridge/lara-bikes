@@ -12,9 +12,9 @@ class StravaTokenFactory extends Factory
     public function definition(): array
     {
         return [
-            'access_token' => $this->faker->word(),
-            'expires_at' => $this->faker->dateTime(),
-            'refresh_token' => $this->faker->word(),
+            'access_token' => $this->faker->sha256,
+            'expires_at' => $this->faker->dateTimeBetween('now', '+1 hour'),
+            'refresh_token' => $this->faker->sha256,
         ];
     }
 }
