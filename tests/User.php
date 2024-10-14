@@ -15,7 +15,6 @@ class User extends Authenticatable implements Stravable
     use LaraBikes;
     use Notifiable;
 
-
     /**
      * The attributes that are mass assignable.
      *

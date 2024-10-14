@@ -16,9 +16,7 @@ class Strava extends Connector
     use AcceptsJson;
     use AuthorizationCodeGrant;
 
-    public function __construct(public Authenticatable $user, private ?string $token = null)
-    {
-    }
+    public function __construct(public Authenticatable $user, private ?string $token = null) {}
 
     /**
      * @throws FatalRequestException
@@ -27,13 +25,13 @@ class Strava extends Connector
      */
     public function refreshToken($client_id, $client_secret, $refresh_token): Response
     {
-        $config   = [
-            'client_id'     => $client_id,
+        $config = [
+            'client_id' => $client_id,
             'client_secret' => $client_secret,
-            'grant_type'    => 'refresh_token',
+            'grant_type' => 'refresh_token',
             'refresh_token' => $refresh_token,
         ];
-        $request  = new TokenExchange($config);
+        $request = new TokenExchange($config);
         $response = $this->send($request);
 
         if ($response->failed()) {
@@ -41,7 +39,7 @@ class Strava extends Connector
         }
 
         $responseData = $response->json();
-        if (!isset($responseData['access_token'])) {
+        if (! isset($responseData['access_token'])) {
             throw new \Exception('Access token not found in response');
         }
 
@@ -53,13 +51,12 @@ class Strava extends Connector
     /**
      * Handle error responses from the API
      *
-     * @param Response $response
      * @throws \Exception
      */
     private function handleErrorResponse(Response $response): void
     {
         $statusCode = $response->status();
-        $errors     = $response->json('errors');
+        $errors = $response->json('errors');
 
         $errorMessage = $this->getMessageForStatusCode($statusCode, $errors);
 
@@ -77,9 +74,9 @@ class Strava extends Connector
         if ($statusCode === 400) {
             $error = 'Bad Request: ';
             $field = $errors[0]['field'] ?? null;
-            $code  = $errors[0]['code'] ?? null;
+            $code = $errors[0]['code'] ?? null;
             if ($field && $code) {
-                $error .=  "$field is $code";
+                $error .= "$field is $code";
             }
 
             return $error;

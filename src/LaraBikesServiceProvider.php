@@ -2,7 +2,6 @@
 
 namespace JordanPartridge\LaraBikes;
 
-use Illuminate\Contracts\Auth\Authenticatable;
 use JordanPartridge\LaraBikes\Commands\LaraBikesCommand;
 use JordanPartridge\LaraBikes\Http\Strava;
 use Spatie\LaravelPackageTools\Package;
@@ -10,7 +9,6 @@ use Spatie\LaravelPackageTools\PackageServiceProvider;
 
 class LaraBikesServiceProvider extends PackageServiceProvider
 {
-
     public function configurePackage(Package $package): void
     {
         /*
@@ -37,7 +35,6 @@ class LaraBikesServiceProvider extends PackageServiceProvider
         $this->app->singleton(LaraBikes::class, function ($app) {
             return new LaraBikes(new Strava($app->auth->user()));
         });
-
 
         $this->app->bind(Strava::class, function ($app) {
             return new Strava($app->auth->user());

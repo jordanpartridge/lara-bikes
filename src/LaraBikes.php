@@ -12,9 +12,7 @@ use Saloon\Http\Response;
 
 readonly class LaraBikes
 {
-    public function __construct(private Strava $strava)
-    {
-    }
+    public function __construct(private Strava $strava) {}
 
     public function refreshToken(string $client_id, string $client_secret, string $refresh_token): Response
     {
@@ -25,14 +23,13 @@ readonly class LaraBikes
     {
         $tokenExchange = new TokenExchange(
             [
-                'grant_type'    => 'access_token',
-                'client_id'     => $user->getClientId(),
+                'grant_type' => 'access_token',
+                'client_id' => $user->getClientId(),
                 'client_secret' => $user->getClientSecret(),
             ]
         );
 
-       $response =  $this->strava->send($tokenExchange);
-
+        $response = $this->strava->send($tokenExchange);
 
         return $response->json()['access_token'];
     }
@@ -40,7 +37,7 @@ readonly class LaraBikes
     /**
      * Get an activity by its ID.
      *
-     * @param int $id - The Strava activity ID.
+     * @param  int  $id  - The Strava activity ID.
      *
      * @throws FatalRequestException
      * @throws RequestException

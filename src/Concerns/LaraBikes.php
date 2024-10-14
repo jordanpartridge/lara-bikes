@@ -19,7 +19,6 @@ trait LaraBikes
         return $this->stravaClient->athleteId;
     }
 
-
     public function getClientId(): string
     {
         return $this->stravaClient->clientId;
@@ -29,5 +28,4 @@ trait LaraBikes
     {
         return $this->stravaClient->clientSecret;
     }
-
 }
