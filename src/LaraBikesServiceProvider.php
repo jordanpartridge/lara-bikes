@@ -21,6 +21,7 @@ class LaraBikesServiceProvider extends PackageServiceProvider
             ->hasConfigFile()
             ->hasViews()
             ->hasMigration('create_strava_tokens_table')
+            ->hasMigration('create_strava_clients_table')
             ->hasCommand(LaraBikesCommand::class)
             ->hasRoutes(['web', 'api']);
 
