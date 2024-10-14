@@ -43,7 +43,6 @@ class Strava extends Connector
             throw new \Exception('Access token not found in response');
         }
 
-        $this->token = $responseData['access_token'];
 
         return $response;
     }
@@ -74,7 +73,7 @@ class Strava extends Connector
         return 'https://www.strava.com/api/v3';
     }
 
-    private function getMessageForStatusCode(int $statusCode, mixed $errors)
+    private function getMessageForStatusCode(int $statusCode, mixed $errors): string
     {
         if ($statusCode === 400) {
             $error = 'Bad Request: ';
