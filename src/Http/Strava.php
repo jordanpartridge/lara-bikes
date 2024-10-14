@@ -84,5 +84,7 @@ class Strava extends Connector
         if ($statusCode === 401) {
             return 'Unauthorized: Invalid access token';
         }
+
+        return 'unimplemented: '.$statusCode;
     }
 }

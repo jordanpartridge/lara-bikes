@@ -45,10 +45,16 @@ it('throws a proper error when client_secret is invalid', function () {
 });
 
 it('it throws proper error for invalid refresh token', function () {
+    // we need to get the secrets from the secrets.php file
+    $clientSecret = null;
+    $clientId = null;
+    include_once 'secrets.php';
+
     $user = User::factory()->make();
     actingAs($user);
-    $strava   = app(Strava::class);
-    include_once('secrets.php');
-    $response = $strava->refreshToken($clientId, $clientSecret, '23423');
-    dd($response->json());
+    $strava = app(Strava::class);
+    expect(fn () => $strava->refreshToken($clientId, $clientSecret, '23423'))->toThrow(
+        Exception::class,
+        'Failed to refresh token. Bad Request: refresh_token is invalid'
+    );
 });

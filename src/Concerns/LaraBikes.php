@@ -24,7 +24,6 @@ trait LaraBikes
         return $this->stravaClient->athleteId ?? null;
     }
 
-
     public function getClientId(): ?string
     {
         return $this->stravaClient->clientId ?? null;
