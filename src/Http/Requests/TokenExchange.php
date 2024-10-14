@@ -2,6 +2,7 @@
 
 namespace JordanPartridge\LaraBikes\Http\Requests;
 
+use Illuminate\Support\Facades\Validator;
 use Saloon\Contracts\Body\HasBody;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
@@ -11,52 +12,55 @@ class TokenExchange extends Request implements HasBody
 {
     use HasJsonBody;
 
-    /**
-     * The HTTP method of the request
-     */
     protected Method $method = Method::POST;
 
-    /**
-     * The code from the Strava OAuth flow, either an authorization code or a refresh token
-     */
-    private string $code;
+    private array $configuration;
 
-    /**
-     * The type of grant being exchanged
-     */
-    private string $grant_type;
-
-    public function __construct(string $code, string $grant_type = 'authorization_code')
+    public function __construct(array $configuration)
     {
-        $this->code = $code;
-        $this->grant_type = $grant_type;
+        $this->configuration = $this->validateConfig($configuration);
     }
 
-    /**
-     * The endpoint for the request
-     */
+    private function validateConfig(array $config): array
+    {
+        $validator = Validator::make($config, [
+            'grant_type' => 'required|in:authorization_code,refresh_token',
+            'client_id' => 'required|string',
+            'client_secret' => 'required|string',
+            'code' => 'required_if:grant_type,authorization_code|string',
+            'refresh_token' => 'required_if:grant_type,refresh_token|string',
+        ]);
+
+        if ($validator->fails()) {
+            throw new \InvalidArgumentException($validator->errors()->first());
+        }
+
+        return $validator->validated();
+    }
+
     public function resolveEndpoint(): string
     {
         return '/oauth/token';
     }
 
-    /**
-     * The request body
-     */
     public function defaultBody(): array
     {
-        return $this->grant_type === 'authorization_code'
+        /**
+         * Note this is not an update or create I got a little confused at once point
+         * it is in fact dealing with authorization codes and refresh tokens
+         */
+        return $this->configuration['grant_type'] === 'authorization_code'
             ? [
-                'client_id' => config('lara-bikes.strava.client_id'),
-                'client_secret' => config('lara-bikes.strava.client_secret'),
-                'code' => $this->code,
-                'grant_type' => $this->grant_type,
+                'client_id' => $this->configuration['client_id'],
+                'client_secret' => $this->configuration['client_secret'],
+                'code' => $this->configuration['code'],
+                'grant_type' => $this->configuration['grant_type'],
             ]
             : [
-                'client_id' => config('lara-bikes.strava.client_id'),
-                'client_secret' => config('lara-bikes.strava.client_secret'),
-                'refresh_token' => $this->code,
-                'grant_type' => $this->grant_type,
+                'client_id' => $this->configuration['client_id'],
+                'client_secret' => $this->configuration['client_secret'],
+                'refresh_token' => $this->configuration['refresh_token'],
+                'grant_type' => $this->configuration['grant_type'],
             ];
     }
 }

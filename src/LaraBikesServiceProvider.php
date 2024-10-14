@@ -21,6 +21,7 @@ class LaraBikesServiceProvider extends PackageServiceProvider
             ->hasConfigFile()
             ->hasViews()
             ->hasMigration('create_strava_tokens_table')
+            ->hasMigration('create_strava_clients_table')
             ->hasCommand(LaraBikesCommand::class)
             ->hasRoutes(['web', 'api']);
 
@@ -32,7 +33,11 @@ class LaraBikesServiceProvider extends PackageServiceProvider
     private function registerServices(): void
     {
         $this->app->singleton(LaraBikes::class, function ($app) {
-            return new LaraBikes(new Strava);
+            return new LaraBikes(new Strava($app->auth->user()));
+        });
+
+        $this->app->bind(Strava::class, function ($app) {
+            return new Strava($app->auth->user());
         });
 
     }

@@ -1,6 +1,7 @@
 # Composer Related
 composer.lock
 /vendor
+/tests/secrets.php
 
 # Frontend Assets
 /node_modules
