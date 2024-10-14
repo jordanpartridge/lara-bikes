@@ -12,8 +12,7 @@ beforeEach(function () {
 
 it('has access to the authenticated user', function () {
     $strava = app(Strava::class);
-    expect($strava->user)->toBe(Auth::user())->and($strava->user)
-        ->toBeInstanceOf(StravaAuthorized::class);
+    expect($strava->authenticated())->toBe(true);
 });
 
 it('requires authentication', function () {

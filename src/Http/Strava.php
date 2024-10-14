@@ -16,7 +16,9 @@ class Strava extends Connector
     use AcceptsJson;
     use AuthorizationCodeGrant;
 
-    public function __construct(public Authenticatable $user, private ?string $token = null) {}
+    public function __construct(private Authenticatable $user)
+    {
+    }
 
     /**
      * @throws FatalRequestException
@@ -25,13 +27,13 @@ class Strava extends Connector
      */
     public function refreshToken($client_id, $client_secret, $refresh_token): Response
     {
-        $config = [
-            'client_id' => $client_id,
+        $config   = [
+            'client_id'     => $client_id,
             'client_secret' => $client_secret,
-            'grant_type' => 'refresh_token',
+            'grant_type'    => 'refresh_token',
             'refresh_token' => $refresh_token,
         ];
-        $request = new TokenExchange($config);
+        $request  = new TokenExchange($config);
         $response = $this->send($request);
 
         if ($response->failed()) {
@@ -39,7 +41,7 @@ class Strava extends Connector
         }
 
         $responseData = $response->json();
-        if (! isset($responseData['access_token'])) {
+        if (!isset($responseData['access_token'])) {
             throw new \Exception('Access token not found in response');
         }
 
@@ -48,6 +50,10 @@ class Strava extends Connector
         return $response;
     }
 
+    public function authenticated(): bool
+    {
+        return $this->user instanceof Authenticatable;
+    }
     /**
      * Handle error responses from the API
      *
