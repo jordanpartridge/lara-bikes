@@ -1,6 +1,5 @@
 <?php
 
-use JordanPartridge\LaraBikes\Contracts\StravaAuthorized;
 use JordanPartridge\LaraBikes\Http\Strava;
 use JordanPartridge\LaraBikes\Tests\User;
 
@@ -21,7 +20,6 @@ it('requires authentication', function () {
     $strava = app(Strava::class);
     expect($strava->resolveBaseUrl())->toBe('https://www.strava.com/api/v3');
 });
-
 
 it('throws a proper error when client_id is invalid', function () {
     $user = User::factory()->make();
