@@ -9,23 +9,29 @@ use JordanPartridge\LaraBikes\Models\StravaClient;
  */
 trait LaraBikes
 {
+    public function authorized(): bool
+    {
+        return $this->stravaClient !== null;
+    }
+
     public function stravaClient()
     {
         return $this->hasOne(StravaClient::class);
     }
 
-    public function getAthleteId(): int
+    public function getAthleteId(): ?int
     {
-        return $this->stravaClient->athleteId;
+        return $this->stravaClient->athleteId ?? null;
     }
 
-    public function getClientId(): string
+
+    public function getClientId(): ?string
     {
-        return $this->stravaClient->clientId;
+        return $this->stravaClient->clientId ?? null;
     }
 
-    public function getClientSecret(): string
+    public function getClientSecret(): ?string
     {
-        return $this->stravaClient->clientSecret;
+        return $this->stravaClient->clientSecret ?? null;
     }
 }

@@ -1,7 +1,6 @@
 <?php
 
-use Illuminate\Support\Facades\Auth;
-use JordanPartridge\LaraBikes\Contracts\Stravable;
+use JordanPartridge\LaraBikes\Contracts\StravaAuthorized;
 use JordanPartridge\LaraBikes\Http\Strava;
 use JordanPartridge\LaraBikes\Tests\User;
 
@@ -14,7 +13,7 @@ beforeEach(function () {
 it('has access to the authenticated user', function () {
     $strava = app(Strava::class);
     expect($strava->user)->toBe(Auth::user())->and($strava->user)
-        ->toBeInstanceOf(Stravable::class);
+        ->toBeInstanceOf(StravaAuthorized::class);
 });
 
 it('requires authentication', function () {
@@ -43,4 +42,13 @@ it('throws a proper error when client_secret is invalid', function () {
             'Failed to refresh token. Unauthorized: Invalid access token'
         );
 
+});
+
+it('it throws proper error for invalid refresh token', function () {
+    $user = User::factory()->make();
+    actingAs($user);
+    $strava   = app(Strava::class);
+    include_once('secrets.php');
+    $response = $strava->refreshToken($clientId, $clientSecret, '23423');
+    dd($response->json());
 });

@@ -7,9 +7,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use JordanPartridge\LaraBikes\Concerns\LaraBikes;
-use JordanPartridge\LaraBikes\Contracts\Stravable;
+use JordanPartridge\LaraBikes\Contracts\StravaAuthorized;
 
-class User extends Authenticatable implements Stravable
+class User extends Authenticatable implements StravaAuthorized
 {
     use HasFactory;
     use LaraBikes;

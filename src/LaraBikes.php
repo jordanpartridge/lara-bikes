@@ -2,7 +2,7 @@
 
 namespace JordanPartridge\LaraBikes;
 
-use JordanPartridge\LaraBikes\Contracts\Stravable;
+use JordanPartridge\LaraBikes\Contracts\StravaAuthorized;
 use JordanPartridge\LaraBikes\Http\Requests\Activities;
 use JordanPartridge\LaraBikes\Http\Requests\TokenExchange;
 use JordanPartridge\LaraBikes\Http\Strava;
@@ -19,7 +19,7 @@ readonly class LaraBikes
         return $this->strava->refreshToken($client_id, $client_secret, $refresh_token);
     }
 
-    public function tokenForUser(Stravable $user): ?string
+    public function tokenForUser(StravaAuthorized $user): ?string
     {
         $tokenExchange = new TokenExchange(
             [
