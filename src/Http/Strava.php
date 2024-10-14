@@ -43,7 +43,6 @@ class Strava extends Connector
             throw new \Exception('Access token not found in response');
         }
 
-
         return $response;
     }
 
