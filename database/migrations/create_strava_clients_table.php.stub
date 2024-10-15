@@ -10,11 +10,10 @@ return new class extends Migration
     {
         Schema::create('strava_clients', function (Blueprint $table) {
             $table->id();
-            $table->string('client_id');
-            $table->string('client_secret');
+            $table->string('client_id')->unique();
+            $table->string('client_secret')->unique();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->string('athlete_id');
-            $table->index('athlete_id');
+            $table->string('athlete_id')->unique();
             $table->timestamps();
         });
     }
