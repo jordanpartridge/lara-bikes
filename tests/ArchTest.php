@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
 // General code quality checks
 arch('it will not use debugging functions')
@@ -32,11 +32,10 @@ arch('model files are in the correct directory')
     ->expect('JordanPartridge\LaraBikes\Models')
     ->toBeClasses();
 
-
 // Relationship method checks
 arch('Strava client encrypts client secret')
     ->expect('JordanPartridge\LaraBikes\Models\StravaClient')
-     ->toHaveMethod('setClientSecretAttribute')
+    ->toHaveMethod('setClientSecretAttribute')
     ->toHaveMethod('getClientSecretAttribute');
 
 // Factory checks
@@ -44,5 +43,3 @@ arch('factories are in the correct namespace')
     ->expect('JordanPartridge\LaraBikes\Database\Factories')
     ->toBeClasses()
     ->toExtend('Illuminate\Database\Eloquent\Factories\Factory');
-
-

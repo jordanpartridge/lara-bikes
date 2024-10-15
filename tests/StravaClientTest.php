@@ -1,8 +1,8 @@
 <?php
 
-use JordanPartridge\LaraBikes\Models\StravaClient;
 use Illuminate\Database\QueryException;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use JordanPartridge\LaraBikes\Models\StravaClient;
 
 uses(RefreshDatabase::class);
 
@@ -43,4 +43,3 @@ it('requires a client id', function () {
         'client_id' => null,
     ]))->toThrow(QueryException::class, 'NOT NULL constraint failed');
 });
-

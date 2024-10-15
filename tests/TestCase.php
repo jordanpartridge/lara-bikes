@@ -14,7 +14,7 @@ class TestCase extends Orchestra
         parent::setUp();
 
         Factory::guessFactoryNamesUsing(
-            fn (string $modelName) => 'JordanPartridge\\LaraBikes\\Database\\Factories\\' . class_basename($modelName) . 'Factory'
+            fn (string $modelName) => 'JordanPartridge\\LaraBikes\\Database\\Factories\\'.class_basename($modelName).'Factory'
         );
     }
 
@@ -34,8 +34,8 @@ class TestCase extends Orchestra
 
     protected function runMigrations(): void
     {
-        $migrationFiles = File::glob(__DIR__ . '/../database/migrations/*.php.stub');
-        $testMigrations = File::glob(__DIR__ . '/migrations/*.php');
+        $migrationFiles = File::glob(__DIR__.'/../database/migrations/*.php.stub');
+        $testMigrations = File::glob(__DIR__.'/migrations/*.php');
 
         collect(array_merge($testMigrations, $migrationFiles))
             ->map(fn ($file) => File::getRequire($file))
